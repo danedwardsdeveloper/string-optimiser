@@ -1,0 +1,43 @@
+{
+	"name": "string-optimiser",
+	"version": "1.0.0",
+	"description": "A utility for generating strings that fall between certain length constraints, useful for website meta titles and meta descriptions.",
+	"main": "build/index.js",
+	"types": "build/index.d.ts",
+	"files": ["build/**/*"],
+	"type": "module",
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"format": "biome format . --write",
+		"check": "biome check . --write --unsafe",
+		"dev": "tsx watch src/index.ts",
+		"prepublishOnly": "pnpm run build && pnpm run test",
+		"build": "tsc"
+	},
+	"keywords": [
+		"string",
+		"optimiser",
+		"optimizer",
+		"metadata",
+		"seo",
+		"typescript"
+	],
+	"author": "Dan Edwards",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/danedwardsdeveloper/string-optimiser.git"
+	},
+	"bugs": {
+		"url": "https://github.com/danedwardsdeveloper/string-optimiser/issues"
+	},
+	"homepage": "https://github.com/danedwardsdeveloper/string-optimiser#readme",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.15.23",
+		"tsx": "^4.19.4",
+		"typescript": "^5.8.3",
+		"vitest": "^3.1.4"
+	}
+}

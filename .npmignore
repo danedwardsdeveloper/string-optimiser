@@ -1,0 +1,8 @@
+src/
+tests/
+*.test.ts
+*.test.js
+biome.json
+vitest.config.ts
+tsconfig.json
+cspell.json
