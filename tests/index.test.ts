@@ -1,8 +1,19 @@
 import { describe, expect, test } from 'vitest'
-import { initialiseStringOptimiser } from '../src/index'
+import { initialiseStringOptimiser, metaDescriptionConfig, metaTitleConfig } from '../src/index'
 import type { OptimiserInput } from '../src/types'
 
-const additionalPhraseOptions = Array.from({ length: 22 }, (_, i) => 'a'.repeat((i + 1) * 5))
+const additionalPhraseOptions = [
+	'Salon',
+	'Beauty Salon',
+	'Professional Beauty Salon',
+	'Professional Beauty & Skincare Salon',
+	'Professional Beauty & Skincare Salon Services',
+	'Professional Beauty & Skincare Salon Services & Treatments',
+	'Professional Beauty & Skincare Salon Services & Luxury Treatments',
+	'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available',
+	'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available Daily',
+	'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available Daily by Appointment Only',
+]
 
 type TestSuite = {
 	suiteDescription: string
@@ -20,10 +31,7 @@ type TestSuite = {
 const testSuites: TestSuite[] = [
 	{
 		suiteDescription: 'Title optimisation',
-		config: {
-			minimumLength: 50,
-			maximumLength: 65,
-		},
+		config: metaTitleConfig,
 		cases: [
 			{
 				caseDescription: 'should optimise with single base',
@@ -40,10 +48,13 @@ const testSuites: TestSuite[] = [
 				},
 			},
 			{
-				caseDescription: 'should handle empty additional phrases',
+				caseDescription: 'Can handle basePhraseOptions that are already too long',
 				input: {
-					base: 'Beauty by Jill Professional Salon and Spa Services',
-					additionalPhraseOptions: [],
+					baseOptions: [
+						'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available Daily by Appointment Only',
+						'Beauty by Jill',
+					],
+					additionalPhraseOptions,
 				},
 			},
 			{
@@ -58,10 +69,7 @@ const testSuites: TestSuite[] = [
 	},
 	{
 		suiteDescription: 'Description optimisation',
-		config: {
-			minimumLength: 70,
-			maximumLength: 155,
-		},
+		config: metaDescriptionConfig,
 		cases: [
 			{
 				caseDescription: 'should optimise description length',
@@ -85,6 +93,12 @@ describe('String optimiser', () => {
 						expect(() => optimiser(input)).toThrow()
 					} else {
 						const result = optimiser(input)
+
+						console.log(caseDescription)
+						console.log('Result: ', result)
+						console.log('Min: ', config.minimumLength, 'Actual: ', result.length, 'Max: ', config.maximumLength)
+						console.log('\n')
+
 						expect(result.length).toBeGreaterThanOrEqual(config.minimumLength)
 						expect(result.length).toBeLessThanOrEqual(config.maximumLength)
 						expect(result).toBeTruthy()
