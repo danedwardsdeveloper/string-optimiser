@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       string-optimiser:
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.9.4
@@ -575,8 +575,8 @@ packages:
   std-env@3.9.0:
     resolution: {integrity: sha512-UGvjygr6F6tpH7o2qyqR6QYpwraIjKSdtzyBdyytFOHmPZY917kwdwLG0RbOjWOnKmnm3PeHjaoLLMie7kPLQw==}
 
-  string-optimiser@1.0.3:
-    resolution: {integrity: sha512-wIVymqhahIecmPMD5t6ylaWAruaUJVzlEyzC3SbD5pe/GuWEcG8SWy4Ku7rmb4IUS5kg/Cwg5UDYbzBwOynXEw==}
+  string-optimiser@1.0.4:
+    resolution: {integrity: sha512-YpkVRxbJFujr3LBzTGvAwK7m6fhHguII871D0/blL0moxeAOC6SY1Ba8ZcWdLWPP4XWbJGu903o1hAc3DxNdOA==}
 
   supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
@@ -1144,7 +1144,7 @@ snapshots:
 
   std-env@3.9.0: {}
 
-  string-optimiser@1.0.3: {}
+  string-optimiser@1.0.4: {}
 
   supports-color@5.5.0:
     dependencies:

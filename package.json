@@ -45,6 +45,6 @@
 		"vitest": "^3.1.4"
 	},
 	"dependencies": {
-		"string-optimiser": "^1.0.3"
+		"string-optimiser": "^1.0.4"
 	}
 }
