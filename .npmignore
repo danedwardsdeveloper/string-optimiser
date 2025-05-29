@@ -6,3 +6,4 @@ biome.json
 vitest.config.ts
 tsconfig.json
 cspell.json
+notes.md
