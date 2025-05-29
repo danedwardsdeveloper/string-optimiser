@@ -107,14 +107,18 @@ export function initialiseStringOptimiser({ minimumLength, maximumLength, separa
 	}
 }
 
-export const optimiseTitle = initialiseStringOptimiser({
+export const metaTitleConfig: InitialiserConfig = {
 	minimumLength: 50,
 	maximumLength: 65,
-})
+}
 
-export const optimiseDescription = initialiseStringOptimiser({
-	minimumLength: 70,
-	maximumLength: 155,
-})
+export const optimiseTitle = initialiseStringOptimiser(metaTitleConfig)
+
+export const metaDescriptionConfig: InitialiserConfig = {
+	minimumLength: 50,
+	maximumLength: 65,
+}
+
+export const optimiseDescription = initialiseStringOptimiser(metaDescriptionConfig)
 
 export type * from './types.js'
