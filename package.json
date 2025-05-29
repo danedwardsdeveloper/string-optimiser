@@ -4,9 +4,7 @@
 	"description": "A utility for generating strings that fall between certain length constraints, useful for website meta titles and meta descriptions.",
 	"main": "build/index.js",
 	"types": "build/index.d.ts",
-	"files": [
-		"build/**/*"
-	],
+	"files": ["build/**/*"],
 	"type": "module",
 	"scripts": {
 		"test": "vitest run",
@@ -38,13 +36,13 @@
 	"homepage": "https://github.com/danedwardsdeveloper/string-optimiser#readme",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^22.15.23",
+		"@types/node": "^22.15.24",
 		"nodemon": "^3.1.10",
 		"tsx": "^4.19.4",
 		"typescript": "^5.8.3",
 		"vitest": "^3.1.4"
 	},
 	"dependencies": {
-		"string-optimiser": "^1.0.2"
+		"string-optimiser": "^1.0.3"
 	}
 }
