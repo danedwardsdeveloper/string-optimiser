@@ -1,6 +1,6 @@
 {
 	"name": "string-optimiser",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A utility for generating strings that fall between certain length constraints, useful for website meta titles and meta descriptions.",
 	"main": "build/index.js",
 	"types": "build/index.d.ts",
