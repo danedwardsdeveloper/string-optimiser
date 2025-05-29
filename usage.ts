@@ -1,32 +1,40 @@
-import { optimiseTitle } from 'string-optimiser'
+import { metaDescriptionConfig, metaTitleConfig, optimiseDescription, optimiseTitle } from 'string-optimiser'
 
-const title = optimiseTitle({
-	base: 'Beauty by Jill',
-	additionalPhraseOptions: [
-		'Salon',
-		'Beauty Salon',
-		'Professional Beauty Salon',
-		'Professional Beauty & Skincare Salon',
-		'Professional Beauty & Skincare Salon Services',
-		'Professional Beauty & Skincare Salon Services & Treatments',
-		'Professional Beauty & Skincare Salon Services & Luxury Treatments',
-		'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available',
-		'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available Daily',
-		'Professional Beauty & Skincare Salon Services & Luxury Spa Treatments Available Daily by Appointment Only',
-	],
-})
+const examples = [
+	{
+		config: metaTitleConfig,
+		result: optimiseTitle({
+			base: 'Chapter 1',
+			additionalPhraseOptions: ['Crime and Punishment', 'Crime and Punishment by Fyodor Dostoevsky'],
+		}),
+	},
+	{
+		config: metaTitleConfig,
+		result: optimiseTitle({
+			baseOptions: ['Chapter 1', 'Chapter 1, Mrs. Rachel Lynde Is Surprised'],
+			additionalPhraseOptions: ['Anne of Green Gables', 'Anne of Green Gables by Lucy Maud Montgomery'],
+		}),
+	},
+	{
+		config: metaDescriptionConfig,
+		result: optimiseDescription({
+			base: 'Jane Eyre by Charlotte Brontë',
+			additionalPhraseOptions: [
+				'ClassicReader.org',
+				'Read the classic novel on ClassicReader.org',
+				'Read the classic Gothic romance novel on ClassicReader.org',
+				"Read Charlotte Brontë's timeless Gothic romance about an independent governess on ClassicReader.org",
+				"Read Charlotte Brontë's groundbreaking Victorian Gothic romance following Jane from orphaned child to independent woman on ClassicReader.org",
+			],
+		}),
+	},
+]
 
-// Test with baseOptions
-const titleWithOptions = optimiseTitle({
-	baseOptions: ['Beauty by Jill', "Jill's Professional Beauty Salon", 'Premium Beauty Services by Jill'],
-	additionalPhraseOptions: ['Expert Treatments', 'Luxury Experience', 'Professional Care'],
-})
-
-console.log('Title:', title)
-console.log('Length:', title.length)
-console.log('\nTitle with options:', titleWithOptions)
-console.log('Length:', titleWithOptions.length)
-
-/*
-pnpm tsx usage
-*/
+for (const { result, config } of examples) {
+	console.log('\n')
+	console.log(result)
+	console.log('Min:', config.minimumLength)
+	console.log('Length:', result.length)
+	console.log('Max:', config.maximumLength)
+	console.log('\n')
+}

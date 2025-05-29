@@ -4,9 +4,7 @@
 	"description": "A utility for generating strings that fall between certain length constraints, useful for website meta titles and meta descriptions.",
 	"main": "build/index.js",
 	"types": "build/index.d.ts",
-	"files": [
-		"build/**/*"
-	],
+	"files": ["build/**/*"],
 	"type": "module",
 	"scripts": {
 		"test": "vitest run",
@@ -14,6 +12,7 @@
 		"format": "biome format . --write",
 		"check": "biome check . --write --unsafe",
 		"dev": "tsx watch src/index.ts",
+		"usage": "nodemon --exec \"pnpm tsx\" usage.ts",
 		"prepublishOnly": "pnpm run build && pnpm run test",
 		"build": "tsc"
 	},
@@ -38,6 +37,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@types/node": "^22.15.23",
+		"nodemon": "^3.1.10",
 		"tsx": "^4.19.4",
 		"typescript": "^5.8.3",
 		"vitest": "^3.1.4"
