@@ -131,8 +131,8 @@ export const metaTitleConfig: InitialiserConfig = {
 export const optimiseTitle = initialiseStringOptimiser(metaTitleConfig)
 
 export const metaDescriptionConfig: InitialiserConfig = {
-	minimumLength: 50,
-	maximumLength: 65,
+	minimumLength: 70,
+	maximumLength: 155,
 }
 
 export const optimiseDescription = initialiseStringOptimiser(metaDescriptionConfig)
