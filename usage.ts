@@ -1,4 +1,10 @@
-import { metaDescriptionConfig, metaTitleConfig, optimiseDescription, optimiseTitle } from 'string-optimiser'
+import { initialiseStringOptimiser, metaDescriptionConfig, metaTitleConfig, optimiseDescription, optimiseTitle } from 'string-optimiser'
+
+const optimiseString = initialiseStringOptimiser({
+	minimumLength: 20,
+	maximumLength: 50,
+	separator: ' - ', // Optional. Default is " | "
+})
 
 const examples = [
 	{
