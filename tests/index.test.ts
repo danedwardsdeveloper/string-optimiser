@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 import { initialiseStringOptimiser, metaDescriptionConfig, metaTitleConfig } from '../src/index'
 import type { OptimiserInput } from '../src/types'
 
@@ -24,6 +24,7 @@ type TestSuite = {
 	cases: {
 		caseDescription: string
 		input: OptimiserInput
+		expectWarning?: boolean
 		expectError?: boolean
 	}[]
 }
@@ -58,12 +59,12 @@ const testSuites: TestSuite[] = [
 				},
 			},
 			{
-				caseDescription: 'should throw error when impossible',
+				caseDescription: 'should warn when constraints cannot be met',
 				input: {
 					base: 'Short',
 					additionalPhraseOptions: ['tiny'],
 				},
-				expectError: true,
+				expectWarning: true,
 			},
 		],
 	},
@@ -87,10 +88,24 @@ describe('String optimiser', () => {
 		describe(suiteDescription, () => {
 			const optimiser = initialiseStringOptimiser(config)
 
-			for (const { caseDescription, input, expectError } of cases) {
+			for (const { caseDescription, input, expectWarning, expectError } of cases) {
 				test(caseDescription, () => {
 					if (expectError) {
 						expect(() => optimiser(input)).toThrow()
+					} else if (expectWarning) {
+						const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+						const result = optimiser(input)
+						expect(warnSpy).toHaveBeenCalled()
+						expect(result).toBeTruthy()
+						expect(typeof result).toBe('string')
+
+						console.log(caseDescription)
+						console.log('Result: ', result)
+						console.log('Min: ', config.minimumLength, 'Actual: ', result.length, 'Max: ', config.maximumLength)
+						console.log('\n')
+
+						warnSpy.mockRestore()
 					} else {
 						const result = optimiser(input)
 

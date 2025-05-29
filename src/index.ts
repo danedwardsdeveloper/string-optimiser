@@ -90,7 +90,23 @@ export function optimiseString(input: NonConfiguredOptimiserInput): string {
 	}
 
 	if (bestResult === null) {
-		throw new Error('No combination can meet the minimum length requirement')
+		console.warn('⚠️  No combination can meet the minimum length requirement. Returning longest available option.', input)
+
+		const longestBase = bases.reduce((longest, current) => (current.length > longest.length ? current : longest))
+		return longestBase
+	}
+
+	const finalLength = bestResult.length
+	if (finalLength < minimumLength) {
+		console.warn(
+			`⚠️  Result is ${minimumLength - finalLength} characters shorter than minimum (${minimumLength}).`,
+			'input: ',
+			input,
+			'Result: ',
+			bestResult,
+		)
+	} else if (finalLength > maximumLength) {
+		console.warn(`⚠️  Result is ${finalLength - maximumLength} characters longer than maximum (${maximumLength}). Result: "${bestResult}"`)
 	}
 
 	return bestResult
